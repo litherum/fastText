@@ -322,7 +322,7 @@ int Autotune::getCutoffForFileSize(
   int target = (fileSize - (107) - 4 * (1 << 8) * dim - outModelSize);
   int cutoff = target / ((dim + dsub - 1) / dsub + (qnorm ? 1 : 0) + 10);
 
-  return std::max(cutoff, kCutoffLimit);
+  return std::max(cutoff, 256);
 }
 
 bool Autotune::quantize(Args& args, const Args& autotuneArgs) {
